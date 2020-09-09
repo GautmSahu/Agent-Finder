@@ -1,0 +1,32 @@
+{% extends 'common.html' %}
+{% block content  %}
+{#    <form action="{% url 'insertData' %}" method="post" enctype="multipart/form-data">#}
+{#        {% csrf_token %}#}
+{#        <input type="file" accept=".tsv" name="tsvfile">#}
+{#        <button type="submit" onclick="msg()">Insert Agents Details</button>#}
+{#    </form>#}
+
+    <form action="{% url 'insertData' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <table align="center">
+                <tr>
+                    <th colspan="2" style="text-align: center;font-size: 50px;color: darkorchid">Insert Agent Information</th>
+                </tr>
+                <tr>
+                    <th><label for="exampleFormControlFile1" style="font-size: 25px;color: green">Select File : </label></th>
+                    <th><input type="file" required accept=".tsv" name="tsvfile" class="form-control-file" id="exampleFormControlFile1"></th>
+                </tr>
+                <tr><th colspan="2" style="text-align: center"><label for="exampleFormControlFile1" style="color: red">Note : Accepted .tsv file only</label></th></tr>
+                <tr><th colspan="2" style="text-align: center"><button type="submit" class="btn btn-outline-success">Insert Agents Details</button></th></tr>
+            </table>
+        </div>
+
+    </form>
+
+    <span id="msg">
+    </span>
+  {% for mess in messages %}
+      <h3 style="text-align: center;color: green">{{ mess }}</h3>
+  {% endfor %}
+{% endblock %}
